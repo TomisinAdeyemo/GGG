@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Left Panel -->
+    <div class="left-panel">
+      <img src="./mainman.png" alt="Company Logo" class="logo">
+      <div class="button-panel">
+        <button data-section="dashboard">Dashboard</button>
+        <button data-section="users">Users</button>
+        <button data-section="earnings">Earnings</button>
+        <button data-section="expenses">Third Party Services</button>
+        <button data-section="email-broadcast">Email Broadcast</button>
+        <button data-section="reports">Reports</button>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <!-- Dashboard Section -->
+      <div id="dashboard" class="content-section">
+       <!-- Top Bar -->
+  <div class="top-bar">
+    <!-- Search Field -->
+    <div class="search-container">
+      <input type="text" placeholder="Search Customer ID" class="search-field">
+      <button class="search-btn">🔍</button>
+    </div>
+    <!-- Admin Info -->
+    <div class="admin-info">
+      <img src="./dde81e4f-5e25-42d7-a337-123b8c6d8803.jpeg" alt="Admin Picture" class="admin-img">
+      <div>
+        <h3 class="admin-name">Adeyemo</h3>
+        <p class="admin-role">FrontEnd Dev</p>
+      </div>
+      <!-- Notification Bell -->
+      <button class="notification-btn">🔔</button>
+    </div>
+  </div>
+
+  <!-- Boxes Section -->
+  <div class="boxes-container">
+    <div class="info-box">
+      <div class="icon-container gradient-bg">👤</div>
+      <div class="text-container">
+        <h2>Total Users</h2>
+        <h3>15,245</h3>
+        <h4>+9.34 Previous Month</h4>
+      </div>
+    </div>
+    <div class="info-box">
+      <div class="icon-container gradient-bg">💰</div>
+      <div class="text-container">
+        <h2>Active Subscriptions</h2>
+        <h3>10,245</h3>
+        <h4>+9.34 Previous Month</h4>
+      </div>
+    </div>
+    <div class="info-box">
+      <div class="icon-container gradient-bg">📈</div>
+      <div class="text-container">
+        <h2>Inactive Users</h2>
+        <h3>1,200</h3>
+        <h4>+9.34 Previous Month</h4>
+      </div>
+    </div>
+    <div class="info-box">
+      <div class="icon-container gradient-bg">📧</div>
+      <div class="text-container">
+        <h2>Active Trail Users</h2>
+        <h3>230</h3>
+        <h4>+9.34 Previous Month</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="lower-section">
+    <!-- First Box -->
+    <div class="demographic-box">
+      <div class="box-header">
+        <h2>Customer Demographic</h2>
+        <div class="dynamic-options">
+          <select>
+            <option value="all">All</option>
+            <option value="man">Man</option>
+            <option value="woman">Woman</option>
+          </select>
+        </div>
+      </div>
+      <div class="map-container">
+        <!-- Replace with a live map integration -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345099495!2d-122.419416!3d37.774929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064baad1d65%3A0x3c418edddf5397a7!2sSan+Francisco%2C+CA!5e0!3m2!1sen!2sus!4v1617316592263!5m2!1sen!2sus"
+          width="100%"
+          height="300"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  
+    <!-- 
+    <div class="info-box">
+        <div class="box-header">
+          <h3>Users Info</h3>
+          <div class="dynamic-options">
+            <select>
+              <option value="all">All</option>
+              <option value="man">Man</option>
+              <option value="woman">Woman</option>
+            </select>
+          </div>
+        </div>
+        <div class="user-data">
+          <div class="user-item">
+            <img src="https://via.placeholder.com/50" alt="Logo" class="user-logo">
+            <div class="user-details">
+              <h3>John Doe</h3>
+              <h4>john.doe@example.com</h4>
+            </div>
+          </div>
+          <div class="user-item">
+            <img src="https://via.placeholder.com/50" alt="Logo" class="user-logo">
+            <div class="user-details">
+              <h3>Jane Smith</h3>
+              <h4>jane.smith@example.com</h4>
+            </div>
+          </div>
+          <div class="user-item">
+            <img src="https://via.placeholder.com/50" alt="Logo" class="user-logo">
+            <div class="user-details">
+              <h3>Mike Johnson</h3>
+              <h4>mike.johnson@example.com</h4>
+            </div>
+          </div>
+          <div class="user-item">
+            <img src="https://via.placeholder.com/50" alt="Logo" class="user-logo">
+            <div class="user-details">
+              <h3>Emily Davis</h3>
+              <h4>emily.davis@example.com</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div> -->
+  
+      </div>
+
+      <!-- Users Section -->
+      <div id="users" class="content-section" style="display: none;">
+         <!-- Top Section -->
+         <div class="top-bar">
+          <input type="text" placeholder="Search Customer ID" class="search-input">
+          <div class="admin-info">
+            <span class="admin-name">Adeyemo</span>
+            <span class="admin-role">FrontEnd Dev</span>
+            <img src="./dde81e4f-5e25-42d7-a337-123b8c6d8803.jpeg" alt="Admin" class="admin-img">
+            <button class="notification-bell">🔔</button>
+          </div>
+        </div>
+
+  <!-- Sub-header Section -->
+  <div class="sub-header">
+    <div>
+      <h2>Users</h2>
+      <p>Active Users</p>
+    </div>
+    <button class="add-user-btn">Add User</button>
+  </div>
+
+  <!-- Filter & Search Section -->
+  <div class="filter-search">
+    <div class="toggle-buttons">
+      <button class="toggle-btn active">All</button>
+      <button class="toggle-btn">Active</button>
+      <button class="toggle-btn">Inactive</button>
+      <button class="toggle-btn">Trial</button>
+    </div>
+    <div class="search-field">
+      <input type="text" placeholder="Search users..." class="search-input">
+      <button class="search-btn">🔍</button>
+    </div>
+  </div>
+
+  <!-- Table Section -->
+  <table class="user-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Packages</th>
+        <th>Lifespan</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John Doe</td>
+        <td>john.doe@example.com</td>
+        <td>+123456789</td>
+        <td>Premium</td>
+        <td>12 months</td>
+        <td>Active</td>
+        <td><button class="view-details-btn">View Details</button></td>
+      </tr>
+      <tr>
+        <td>Jane Smith</td>
+        <td>jane.smith@example.com</td>
+        <td>+987654321</td>
+        <td>Basic</td>
+        <td>6 months</td>
+        <td>Trial</td>
+        <td><button class="view-details-btn">View Details</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <button id="prev-page" class="pagination-btn" disabled>Previous</button>
+    <span id="page-info">Page 1</span>
+    <button id="next-page" class="pagination-btn">Next</button>
+  </div>
+
+      </div>
+
+      <!-- Earnings Section -->
+      <div id="earnings" class="content-section" style="display: none;">
+        <!-- Top Bar -->
+        <div class="top-bar">
+          <input type="text" placeholder="Search Customer ID" class="search-input">
+          <div class="admin-info">
+            <span class="admin-name">Adeyemo</span>
+            <span class="admin-role">FrontEnd Dev</span>
+            <img src="./dde81e4f-5e25-42d7-a337-123b8c6d8803.jpeg" alt="Admin" class="admin-img">
+            <button class="notification-bell">🔔</button>
+          </div>
+        </div>
+
+  <!-- Earnings Title -->
+  <div class="earnings-header">
+    <h3>Earnings</h3>
+    <h4>All Incomes</h4>
+  </div>
+
+  <!-- Total Earnings Section -->
+  <div class="total-earnings">
+    <div class="left">
+      <p class="section-title">Total Earnings</p>
+      <p id="total-earnings-amount">$45,000</p> <!-- Dummy backend data -->
+    </div>
+    <div class="right">
+      <button class="filter-button">Past Week</button>
+      <button class="filter-button">Past Month</button>
+      <button class="filter-button">Past Year</button>
+    </div>
+  </div>
+
+  <!-- Line Chart -->
+  <div class="line-chart">
+    <canvas id="earnings-chart"></canvas>
+  </div>
+
+  <!-- Filters Below Chart -->
+  <div class="chart-filters">
+    <div class="left">
+      <button class="filter-button">All</button>
+      <button class="filter-button">Basic Tier</button>
+      <button class="filter-button">Clear Club</button>
+      <button class="filter-button">Diamond Club</button>
+    </div>
+    <div class="right">
+      <div class="search-container">
+        <input type="text" placeholder="Search...">
+        <button><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="earnings-table">
+    <table>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Purchase Date</th>
+          <th>Amount</th>
+          <th>Purchase ID</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John Doe</td>
+          <td>2024-11-20</td>
+          <td>$300</td>
+          <td>#123456</td>
+          <td><button class="view-receipt-button">View Receipt</button></td>
+        </tr>
+        <!-- More rows will be dynamically populated -->
+      </tbody>
+    </table>
+  </div>
+      </div>
+
+
+
+
+
+
+
+      <!-- Expenses Section -->
+      <div id="expenses" class="content-section" style="display: none;">
+       <!-- Top Bar -->
+       <div class="top-bar">
+        <input type="text" placeholder="Search Customer ID" class="search-input">
+        <div class="admin-info">
+          <span class="admin-name">Adeyemo</span>
+          <span class="admin-role">FrontEnd Dev</span>
+          <img src="./dde81e4f-5e25-42d7-a337-123b8c6d8803.jpeg" alt="Admin" class="admin-img">
+          <button class="notification-bell">🔔</button>
+        </div>
+      </div>
+
+  <!-- Expenses Title -->
+  <div class="expenses-header">
+    <h3>Expenses</h3>
+    <h4>All Outflows</h4>
+  </div>
+
+  <!-- Total Expenses Section -->
+  <div class="total-expenses">
+    <div class="left">
+      <p class="section-title">Total Expenses</p>
+      <p id="total-expenses-amount">$25,000</p> <!-- Dummy backend data -->
+    </div>
+    <div class="right">
+      <button class="filter-button">Past Week</button>
+      <button class="filter-button">Past Month</button>
+      <button class="filter-button">Past Year</button>
+    </div>
+  </div>
+
+  <!-- Line Chart -->
+  <div class="line-chart">
+    <canvas id="expenses-chart"></canvas>
+  </div>
+
+  <!-- Filters Below Chart -->
+  <div class="chart-filters">
+    <div class="left">
+      <button class="filter-button">All</button>
+      <button class="filter-button">Operational</button>
+      <button class="filter-button">Marketing</button>
+      <button class="filter-button">Miscellaneous</button>
+    </div>
+    <div class="right">
+      <div class="search-container">
+        <input type="text" placeholder="Search...">
+        <button><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="expenses-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Vendor</th>
+          <th>Expense Date</th>
+          <th>Amount</th>
+          <th>Expense ID</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ABC Supplies</td>
+          <td>2024-11-15</td>
+          <td>$500</td>
+          <td>#EXP123456</td>
+          <td><button class="view-receipt-button">View Receipt</button></td>
+        </tr>
+        <!-- More rows will be dynamically populated -->
+      </tbody>
+    </table>
+  </div>
+      </div>
+
+
+
+
+
+
+
+      
+
+      <!-- Email Broadcast Section -->
+      <div id="email-broadcast" class="content-section" style="display: none;">
+        <!-- Top Bar -->
+        <div class="top-bar">
+          <input type="text" placeholder="Search Customer ID" class="search-input">
+          <div class="admin-info">
+            <span class="admin-name">Adeyemo</span>
+            <span class="admin-role">FrontEnd Dev</span>
+            <img src="./dde81e4f-5e25-42d7-a337-123b8c6d8803.jpeg" alt="Admin" class="admin-img">
+            <button class="notification-bell">🔔</button>
+          </div>
+        </div>
+
+  <!-- Title and Button Section -->
+  <div class="broadcast-header">
+    <div class="title-left">
+      <h3>Email Broadcast</h3>
+      <p>Here's the list of messages</p>
+    </div>
+    <button class="create-message-btn">Create Broadcast Message</button>
+  </div>
+
+  <!-- Tab Section -->
+  <div class="tab-section">
+    <div class="tab-buttons">
+      <button class="tab active">All</button>
+      <button class="tab">Past Week</button>
+      <button class="tab">Past Month</button>
+      <button class="tab">Past Year</button>
+    </div>
+    <div class="search-field">
+      <input type="text" id="message-search" placeholder="Search messages" />
+    </div>
+  </div>
+
+  <!-- Two Sections Below -->
+  <div class="sections">
+    <!-- Section 1: Messages Table -->
+    <div class="messages-table">
+      <h4>Sent Messages</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>News Title</th>
+            <th>Subscribers</th>
+            <th>Created Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>New Feature Launched</td>
+            <td>2500</td>
+            <td>2024-11-23</td>
+            <td><button class="view-details-btn">View Details</button></td>
+          </tr>
+          <tr>
+            <td>Holiday Sale</td>
+            <td>1800</td>
+            <td>2024-10-15</td>
+            <td><button class="view-details-btn">View Details</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section 2: Send New Message -->
+    <div class="send-message">
+      <h4>Create a New Broadcast Message</h4>
+      <textarea id="message-content" rows="5" placeholder="Write your message here..."></textarea>
+      <button class="send-btn">Send Message</button>
+    </div>
+  </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+      <!-- Reports Section -->
+      <div id="reports" class="content-section" style="display: none;">
+        <div class="top-bar">
+          <input type="text" placeholder="Search Customer ID" class="search-input">
+          <div class="admin-info">
+            <span class="admin-name">Adeyemo</span>
+            <span class="admin-role">FrontEnd Dev</span>
+            <img src="./dde81e4f-5e25-42d7-a337-123b8c6d8803.jpeg" alt="Admin" class="admin-img">
+            <button class="notification-bell">🔔</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
