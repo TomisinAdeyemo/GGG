@@ -219,11 +219,13 @@
   }
   
   .demographic-box {
+    height: 350px; /* Adjusted height */
+    overflow: hidden;
     flex: 3;
     background-color: #000;
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(247, 0, 255, 0.1);
   }
   
   .info-box {
@@ -232,7 +234,7 @@
     color: white;
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(247, 0, 255, 0.1);
   }
   
   .box-header {
@@ -778,3 +780,253 @@ th {
   cursor: pointer;
 }
 
+.second-box {
+  background: #000;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: auto; /* Adjust based on content */
+}
+
+.box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.box-header h1 {
+  font-size: 12px;
+  color: #fff;
+}
+
+.switches {
+  display: flex;
+  gap: 5px;
+}
+
+.switch {
+  background: #f0f0f0;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 11px;
+  display: flex;
+  align-items: right;
+  gap: 5px;
+}
+
+.switch:hover {
+  background: #e0e0e0;
+}
+
+.user-data {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.user-item h2 {
+  font-size: 11px;
+  color: #fff;
+}
+
+.user-item h4 {
+  font-size: 14px;
+  color: #888;
+  margin-top: 5px;
+}
+
+.screentime-section {
+  margin-top: 30px;
+}
+
+.screentime-section h3 {
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+#screentime-chart {
+  width: 100%;
+  height: 200px;
+}
+
+.chart-container {
+  margin-top: 20px;
+  padding: 20px;
+  background: #1a1a1a;
+  border-radius: 8px;
+  color: white;
+}
+.chart-container h3 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+#screentime-chart {
+  max-width: 70%;
+  height: 300px;
+}
+
+/* Ensure clear separation for the comparison section */
+#comparison-chart-section {
+  margin-top: 20px; /* Adjust spacing between the chart and the first box */
+  text-align: center; /* Center-align the chart */
+}
+
+#comparison-chart-canvas {
+  display: block;
+  margin: 0 auto;
+  width: 90%; /* Reduce the width */
+  max-width: 600px; /* Limit the max width */
+  max-height: 300px; /* Reduce the height */
+  border: 1px solid #444; /* Add a subtle border */
+  border-radius: 8px;
+  background-color: #222; /* Dark background to match the design */
+}
+
+#comparison-section {
+  margin-top: -150px;
+  padding: 20px;
+  background-color: #000;
+  border-radius: 10px;
+  color: white;
+  width: 70%;
+}
+
+#comparison-box {
+  background-color: #000;
+  color: white;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+  width: 90%;
+}
+
+#comparison-box h3 {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+/* Aligning tiers horizontally */
+.comparison-header {
+  display: flex;
+  justify-content: space-between;  /* Space between text and buttons */
+  align-items: center;  /* Vertically align the text and buttons */
+  margin-bottom: 20px;  /* Space between header and chart */
+}
+
+.comparison-text {
+  display: flex;  /* Align tiers horizontally */
+  gap: 20px;  /* Space between each tier */
+}
+
+.comparison-text h5 {
+  display: flex;
+  align-items: center;
+}
+
+.circle {
+  display: inline-block;
+  width: 12px; /* Circle size */
+  height: 12px;
+  margin-left: 8px; /* Space between the text and circle */
+  border-radius: 50%;
+}
+
+.time-frame {
+  display: flex;
+  justify-content: space-between;  /* Space between the buttons */
+  width: 200px; /* Fixed width for the buttons */
+}
+
+.time-frame button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #f0f0f0; /* Light background for all buttons */
+  color: #333;
+  cursor: pointer;
+}
+
+.time-frame button:hover {
+  background-color: #ddd; /* Light gray on hover */
+}
+
+/* Highlighting the active button */
+.time-frame button.active {
+  background-color: #4CAF50; /* Green background for active button */
+  color: white;
+}
+
+/* Main box styling */
+#final-box {
+  background-color: #000;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+/* Header and labels */
+.final-header {
+  margin-bottom: 20px;
+}
+
+.label-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.label-container span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Pie chart container styling */
+.pie-chart-container {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.chart-box {
+  flex: 1;
+  background-color: #1C102E;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.chart-box h4 {
+  margin-bottom: 10px;
+}
+
+.chart-box canvas {
+  margin: 10px 0;
+}
+
+.chart-box h3 {
+  margin: 10px 0;
+  color: #FFD700;
+}
+
+.chart-box h4:last-of-type {
+  color: #AAA;
+}
+
+canvas {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+}
