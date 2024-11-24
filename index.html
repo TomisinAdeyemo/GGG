@@ -407,15 +407,27 @@
       <!-- Email Broadcast Section -->
       <div id="email-broadcast" class="content-section" style="display: none;">
         <!-- Top Bar -->
-        <div class="top-bar">
-          <input type="text" placeholder="Search Customer ID" class="search-input">
-          <div class="admin-info">
-            <span class="admin-name">Adeyemo</span>
-            <span class="admin-role">FrontEnd Dev</span>
-            <img src="./dde81e4f-5e25-42d7-a337-123b8c6d8803.jpeg" alt="Admin" class="admin-img">
-            <button class="notification-bell">🔔</button>
-          </div>
+  <div class="top-bar">
+    <!-- Left: Search field -->
+    <div class="search-container">
+      <input type="text" id="search" placeholder="Search Messages" />
+      <button id="search-btn">Search</button>
+    </div>
+    
+    <!-- Right: Admin Profile & Notification -->
+    <div class="right">
+      <div class="admin-profile">
+        <img src="admin-image.jpg" alt="Admin" class="admin-image" />
+        <div class="admin-info">
+          <p>Admin Name</p>
+          <p>Admin Role</p>
         </div>
+      </div>
+      <div class="notification-bell">
+        <i class="fa fa-bell"></i>
+      </div>
+    </div>
+  </div>
 
   <!-- Title and Button Section -->
   <div class="broadcast-header">
@@ -439,43 +451,40 @@
     </div>
   </div>
 
-  <!-- Two Sections Below -->
-  <div class="sections">
-    <!-- Section 1: Messages Table -->
-    <div class="messages-table">
-      <h4>Sent Messages</h4>
-      <table>
-        <thead>
-          <tr>
-            <th>News Title</th>
-            <th>Subscribers</th>
-            <th>Created Date</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>New Feature Launched</td>
-            <td>2500</td>
-            <td>2024-11-23</td>
-            <td><button class="view-details-btn">View Details</button></td>
-          </tr>
-          <tr>
-            <td>Holiday Sale</td>
-            <td>1800</td>
-            <td>2024-10-15</td>
-            <td><button class="view-details-btn">View Details</button></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <!-- Section 1: Messages Table -->
+  <div class="messages-table">
+    <h4>Sent Messages</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>News Title</th>
+          <th>Subscribers</th>
+          <th>Created Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>New Feature Launched</td>
+          <td>2500</td>
+          <td>2024-11-23</td>
+          <td><button class="view-details-btn">View Details</button></td>
+        </tr>
+        <tr>
+          <td>Holiday Sale</td>
+          <td>1800</td>
+          <td>2024-10-15</td>
+          <td><button class="view-details-btn">View Details</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-    <!-- Section 2: Send New Message -->
-    <div class="send-message">
-      <h4>Create a New Broadcast Message</h4>
-      <textarea id="message-content" rows="5" placeholder="Write your message here..."></textarea>
-      <button class="send-btn">Send Message</button>
-    </div>
+  <!-- Section 2: Send New Message -->
+  <div class="send-message">
+    <h4>Create a New Broadcast Message</h4>
+    <textarea id="message-content" rows="5" placeholder="Write your message here..."></textarea>
+    <button class="send-btn">Send Message</button>
   </div>
       </div>
 
@@ -490,15 +499,91 @@
 
       <!-- Reports Section -->
       <div id="reports" class="content-section" style="display: none;">
-        <div class="top-bar">
-          <input type="text" placeholder="Search Customer ID" class="search-input">
-          <div class="admin-info">
-            <span class="admin-name">Adeyemo</span>
-            <span class="admin-role">FrontEnd Dev</span>
-            <img src="./dde81e4f-5e25-42d7-a337-123b8c6d8803.jpeg" alt="Admin" class="admin-img">
-            <button class="notification-bell">🔔</button>
-          </div>
+         <!-- Top Bar -->
+  <div class="top-bar">
+    <!-- Left: Search field -->
+    <div class="search-container">
+      <input type="text" id="search-reports" placeholder="Search Reports" />
+      <button id="search-reports-btn">Search</button>
+    </div>
+
+    <!-- Right: Admin Profile & Notification -->
+    <div class="right">
+      <div class="admin-profile">
+        <img src="admin-image.jpg" alt="Admin" class="admin-image" />
+        <div class="admin-info">
+          <p>Admin Name</p>
+          <p>Admin Role</p>
         </div>
+      </div>
+      <div class="notification-bell">
+        <i class="fa fa-bell"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reports Overview -->
+  <div class="reports-header">
+    <h3>Reports</h3>
+    <h4>System Overview</h4>
+  </div>
+
+  <!-- Filter Tabs -->
+  <div class="filter-tabs">
+    <div class="tab-buttons">
+      <button class="tab active">All</button>
+      <button class="tab">Daily</button>
+      <button class="tab">Weekly</button>
+      <button class="tab">Monthly</button>
+    </div>
+
+    <!-- Right: Search Field -->
+    <div class="right-search-container">
+      <input type="text" id="filter-search" placeholder="Filter Reports" />
+      <button id="filter-search-btn">Search</button>
+    </div>
+  </div>
+
+  <!-- Table Section -->
+  <div class="reports-table">
+    <h4>Report Details</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Sender's Email</th>
+          <th>Date Received</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Monthly Financial Summary</td>
+          <td>finance@company.com</td>
+          <td>2024-11-01</td>
+          <td><button class="view-details-btn">View Details</button></td>
+        </tr>
+        <tr>
+          <td>Weekly Activity Report</td>
+          <td>admin@company.com</td>
+          <td>2024-11-15</td>
+          <td><button class="view-details-btn">View Details</button></td>
+        </tr>
+        <tr>
+          <td>System Performance Overview</td>
+          <td>support@company.com</td>
+          <td>2024-11-20</td>
+          <td><button class="view-details-btn">View Details</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <button class="pagination-btn">Previous</button>
+    <button class="pagination-btn">Next</button>
+  </div>
       </div>
     </div>
   </div>
