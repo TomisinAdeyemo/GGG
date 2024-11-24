@@ -581,7 +581,6 @@ th, td {
 th {
   background-color: #222;
 }
-
 /* General Styling */
 #email-broadcast-section {
   padding: 20px;
@@ -612,10 +611,6 @@ th {
   cursor: pointer;
 }
 
-#search-btn:hover {
-  background-color: #155a8a;
-}
-
 .right {
   display: flex;
   align-items: center;
@@ -642,10 +637,6 @@ th {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
-}
-
-.broadcast-header .title-left {
-  max-width: 70%;
 }
 
 .create-message-btn {
@@ -693,14 +684,8 @@ th {
   border: none;
 }
 
-.sections {
-  display: flex;
-  margin-top: 20px;
-}
-
 .messages-table {
-  flex: 1;
-  margin-right: 20px;
+  margin-top: 20px;
 }
 
 .messages-table table {
@@ -711,6 +696,7 @@ th {
 .messages-table th, .messages-table td {
   padding: 10px;
   text-align: left;
+  border: 1px solid #333;
 }
 
 .messages-table th {
@@ -734,7 +720,7 @@ th {
 }
 
 .send-message {
-  flex: 1;
+  margin-top: 20px;
 }
 
 .send-message textarea {
@@ -757,3 +743,38 @@ th {
 .send-btn:hover {
   background-color: #155a8a;
 }
+
+/* Filter Tabs */
+.filter-tabs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.right-search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.right-search-container input {
+  width: 250px;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+}
+
+#filter-search-btn {
+  padding: 10px 20px;
+  background-color: #1d72b8;
+  border: none;
+  cursor: pointer;
+}
+
