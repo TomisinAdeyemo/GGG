@@ -114,83 +114,47 @@ document.getElementById("earnings-btn").addEventListener("click", function () {
 });
 
 // Line Chart using Chart.js
-const ctx = document.getElementById("earnings-chart").getContext("2d");
-const earningsChart = new Chart(ctx, {
-  type: "line",
-  data: {
-    labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-    datasets: [{
-      label: "Earnings",
-      data: [5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 45000, 48000, 49000, 50000],
-      borderColor: "rgba(75, 192, 192, 1)",
-      backgroundColor: "rgba(75, 192, 192, 0.2)",
-      borderWidth: 2,
-    }]
-  },
-  options: {
-    scales: {
-      y: { beginAtZero: true, max: 50000 },
-    },
-  },
-});
 
-// Show Expenses Section
-document.getElementById("expenses-btn").addEventListener("click", function () {
-  document.querySelectorAll(".content-section").forEach((section) => {
-    section.style.display = "none";
-  });
-  document.getElementById("expenses-section").style.display = "block";
-});
+// Data and colors for the pie charts
+const data = [12, 19, 3, 5, 2, 3, 7];
+const colors = [
+    '#FF5733',
+    '#33FF57',
+    '#3357FF',
+    '#FFC300',
+    '#DA33FF',
+    '#33FFF6',
+    '#FF6F33',
+];
 
-// Line Chart using Chart.js for Expenses
-const ctxExpenses = document.getElementById("expenses-chart").getContext("2d");
-const expensesChart = new Chart(ctxExpenses, {
-  type: "line",
-  data: {
-    labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-    datasets: [{
-      label: "Expenses",
-      data: [3000, 7000, 10000, 15000, 17000, 20000, 22000, 24000, 25000, 27000, 28000, 30000],
-      borderColor: "rgba(255, 99, 132, 1)",
-      backgroundColor: "rgba(255, 99, 132, 0.2)",
-      borderWidth: 2,
-    }]
-  },
-  options: {
-    scales: {
-      y: { beginAtZero: true, max: 50000 },
-    },
-  },
-});
+const labels = [
+    'Label 1',
+    'Label 2',
+    'Label 3',
+    'Label 4',
+    'Label 5',
+    'Label 6',
+    'Label 7',
+];
 
-// Handle tab switching
-const tabs = document.querySelectorAll(".tab");
-tabs.forEach((tab) => {
-  tab.addEventListener("click", function () {
-    tabs.forEach((t) => t.classList.remove("active"));
-    this.classList.add("active");
-  });
-});
+// Create pie charts
+const pieCharts = ['pie-chart-1', 'pie-chart-2', 'pie-chart-3', 'pie-chart-4'];
 
-// Handle search functionality for messages
-document.getElementById("search-btn").addEventListener("click", function () {
-  const searchText = document.getElementById("search").value;
-  alert("Searching for: " + searchText);
+pieCharts.forEach((id) => {
+    const ctx = document.getElementById(id).getContext('2d');
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                data: data,
+                backgroundColor: colors,
+            }],
+        },
+        options: {
+            plugins: {
+                legend: { display: false }, // Hide default legend
+            },
+        },
+    });
 });
-
-// Handle the "Create Broadcast Message" button (For now just a log)
-document.querySelector(".create-message-btn").addEventListener("click", function () {
-  alert("Create Broadcast Message clicked");
-});
-
-// Handle sending the message
-document.querySelector(".send-btn").addEventListener("click", function () {
-  const messageContent = document.getElementById("message-content").value;
-  if (messageContent) {
-    alert("Message sent: " + messageContent);
-  } else {
-    alert("Please write a message to send.");
-  }
-});
-
-  
