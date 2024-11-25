@@ -218,15 +218,15 @@
   }
   
   .text-container h2 {
-    font-size: 18px;
+    font-size: 13px;
     margin: 0;
-    color: #fff;
+    color: #828282;
   }
   
   .text-container h3 {
-    font-size: 24px;
+    font-size: 22px;
     margin: 5px 0 0;
-    color: #452878;
+    color: #fff;
   }
   
   .text-container h4 {
