@@ -22,10 +22,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // If you want to dynamically update the box values
 const boxes = [
-    { icon: "👤", title: "Users", value: "1,245", subtitle: "Active Users" },
-    { icon: "💰", title: "Earnings", value: "$10,245", subtitle: "Monthly Revenue" },
-    { icon: "📈", title: "Growth", value: "12%", subtitle: "Monthly Growth" },
-    { icon: "📧", title: "Messages", value: "230", subtitle: "New Emails" },
+    { icon: "👤", title: "Total Users", value: "152,200", subtitle: "+9.86 Previous Month" },
+    { icon: "💰", title: "Active Subscriptions", value: "10,600", subtitle: "+9.86 Previous Month" },
+    { icon: "📈", title: "Active Trial Users", value: "23,000", subtitle: "+9.86 Previous Month" },
+    { icon: "📧", title: "Inactive Users", value: "40,300", subtitle: "+9.86 Previous Month" },
   ];
   
   document.addEventListener("DOMContentLoaded", function () {
