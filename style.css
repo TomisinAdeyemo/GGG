@@ -37,9 +37,44 @@
   }
   
   .logo {
-    width: 100px;
+    width: 190px;
     margin-bottom: 20px;
+    margin-top: 15px;
   }
+
+  .dashboard-btn {
+    margin-left: -20px;
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    border: none;
+    background-color: #2c3e50; /* Customize button background */
+    color: white;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .dashboard-btn:hover {
+    background-color: #34495e; /* Add hover effect */
+  }
+  
+  .dashboard-icon {
+    width: 12px; /* Adjust icon size */
+    height: 12px;
+    margin-right: 8px; /* Space between the icon and text */
+  }
+
+  .dashboard-icon2 {
+    width: 30px; /* Adjust icon size */
+    height: 30px;
+    margin-right: 8px; /* Space between the icon and text */
+  }
+
+  .button-panel {
+    margin-left: -50px;
+  }
+  
   
   .button-panel button {
     background-color: transparent;
@@ -52,6 +87,7 @@
     width: 100%;
     border-radius: 5px;
   }
+
   
   .button-panel button:hover {
     background-color: #452878;
@@ -102,7 +138,6 @@
   .search-field {
     width: 250px;
     padding: 8px 10px;
-    border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
   }
@@ -390,10 +425,10 @@
   .user-table {
     width: 100%;
     border-collapse: collapse;
+    border-radius: 20px;
   }
   
   .user-table th, .user-table td {
-    border: 1px solid #000;
     padding: 10px;
     text-align: left;
   }
@@ -567,6 +602,7 @@
 
 table {
   width: 100%;
+  border-radius: 10px;
   border-collapse: collapse;
   border: 1px solid #000;
   background-color: black;
@@ -583,6 +619,9 @@ th, td {
 th {
   background-color: #222;
 }
+
+
+
 /* General Styling */
 #email-broadcast-section {
   padding: 20px;
@@ -608,7 +647,7 @@ th {
 
 #search-btn {
   padding: 10px 20px;
-  background-color: #1d72b8;
+  background-color: #452878;
   border: none;
   cursor: pointer;
 }
@@ -642,7 +681,7 @@ th {
 }
 
 .create-message-btn {
-  background-color: #1d72b8;
+  background-color: #452878;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -650,7 +689,7 @@ th {
 }
 
 .create-message-btn:hover {
-  background-color: #155a8a;
+  background-color: #452878;
 }
 
 .tab-section {
@@ -672,11 +711,11 @@ th {
 }
 
 .tab.active {
-  background-color: #1d72b8;
+  background-color: #452878;
 }
 
 .tab:hover {
-  background-color: #155a8a;
+  background-color: #452878;
 }
 
 .search-field input {
@@ -710,7 +749,7 @@ th {
 }
 
 .view-details-btn {
-  background-color: #1d72b8;
+  background-color: #452878;
   padding: 5px 10px;
   color: white;
   border: none;
@@ -718,7 +757,7 @@ th {
 }
 
 .view-details-btn:hover {
-  background-color: #155a8a;
+  background-color: #452878;
 }
 
 .send-message {
@@ -735,7 +774,7 @@ th {
 }
 
 .send-btn {
-  background-color: #1d72b8;
+  background-color: #452878;
   padding: 10px 20px;
   color: white;
   border: none;
@@ -743,7 +782,7 @@ th {
 }
 
 .send-btn:hover {
-  background-color: #155a8a;
+  background-color: #452878;
 }
 
 /* Filter Tabs */
