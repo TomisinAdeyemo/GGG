@@ -102,29 +102,61 @@
 
   <div class="lower-section">
     <!-- First Box -->
-    <div class="demographic-box">
-      <div class="box-header">
-        <h2>Customer Demographic</h2>
-        <div class="dynamic-options">
-          <select>
-            <option value="all">All</option>
-            <option value="man">Man</option>
-            <option value="woman">Woman</option>
-          </select>
-        </div>
-      </div>
-      <div class="map-container">
-        <!-- Replace with a live map integration -->
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345099495!2d-122.419416!3d37.774929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064baad1d65%3A0x3c418edddf5397a7!2sSan+Francisco%2C+CA!5e0!3m2!1sen!2sus!4v1617316592263!5m2!1sen!2sus"
-          width="100%"
-          height="300"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy">
-        </iframe>
-      </div>
+    <div id="map-container">
+      <svg id="usa-map"></svg>
+      <div class="tooltip" id="tooltip"></div>
     </div>
+  
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+      // Define the map dimensions
+      const width = 860;
+      const height = 450;
+  
+      const svg = d3.select("#usa-map")
+                    .attr("viewBox", `0 0 ${width} ${height}`);
+  
+      const tooltip = d3.select("#tooltip");
+  
+      // Projection and path generator
+      const projection = d3.geoAlbersUsa().scale(1000).translate([width / 2, height / 2]);
+      const path = d3.geoPath().projection(projection);
+  
+      // Load GeoJSON data
+      d3.json("https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json")
+        .then(geoData => {
+          // Example custom colors for states
+          const userStateData = {
+            "California": "#fff",
+            "Texas": "#33FF57",
+            "Ariz": "#5733FF",
+            "New York": "#5733FF",
+            "New York": "#5733FF",
+            "New York": "#5733FF",
+            // Add other states as needed...
+          };
+  
+          svg.selectAll("path")
+            .data(geoData.features)
+            .enter()
+            .append("path")
+            .attr("d", path)
+            .attr("class", "state")
+            .attr("fill", d => userStateData[d.properties.name] || "#000") // Default gray for unspecified states
+            .on("mouseover", (event, d) => {
+              tooltip.style("visibility", "visible")
+                     .text(d.properties.name);
+            })
+            .on("mousemove", event => {
+              tooltip.style("top", (event.pageY - 10) + "px")
+                     .style("left", (event.pageX + 10) + "px");
+            })
+            .on("mouseout", () => {
+              tooltip.style("visibility", "hidden");
+            });
+        })
+        .catch(error => console.error("Error loading GeoJSON:", error));
+    </script>
     
   
     <!-- -->
@@ -196,28 +228,28 @@
   </div>
   <div class="pie-chart-container">
       <div class="chart-box">
-          <h4>Chart 1</h4>
+          <h4>Free Trial</h4>
           <canvas id="pie-chart-1"></canvas>
-          <h3>50%</h3>
-          <h4>Data 1</h4>
+          <h3>Apple Genie</h3>
+          <h4>$0.09 per token</h4>
       </div>
       <div class="chart-box">
-          <h4>Chart 2</h4>
+          <h4>Basic Tier $9.99</h4>
           <canvas id="pie-chart-2"></canvas>
-          <h3>35%</h3>
-          <h4>Data 2</h4>
+          <h3>Apple Genie</h3>
+          <h4>$0.09 per token</h4>
       </div>
       <div class="chart-box">
-          <h4>Chart 3</h4>
+          <h4>Clear Club $16.99</h4>
           <canvas id="pie-chart-3"></canvas>
-          <h3>65%</h3>
-          <h4>Data 3</h4>
+          <h3>Apple Genie</h3>
+          <h4>$0.09 per token</h4>
       </div>
       <div class="chart-box">
-          <h4>Chart 4</h4>
+          <h4>Diamond Club $22.99</h4>
           <canvas id="pie-chart-4"></canvas>
-          <h3>80%</h3>
-          <h4>Data 4</h4>
+          <h3>Apple Genie</h3>
+          <h4>$0.09 per token</h4>
       </div>
   </div>
 </div>
