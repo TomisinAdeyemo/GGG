@@ -41,7 +41,7 @@
         </button>
         <button data-section="expenses" class="dashboard-btn">
           <img src="./expense.png" alt="Dashboard Icon" class="dashboard-icon" />
-          Third Party Services
+          Expenses
         </button>
         <button data-section="email-broadcast" class="dashboard-btn">
           <img src="./email broadcast.png" alt="Dashboard Icon" class="dashboard-icon" />
@@ -449,7 +449,10 @@ pieCharts.forEach((id) => {
       <h2>Users</h2>
       <p>Active Users</p>
     </div>
-    <button class="add-user-btn">Add User</button>
+    <div class="header-right">
+      <button class="add-user-btn">Add User</button>
+      <button class="download-info-btn">Download Info</button>
+  </div>
   </div>
 
   <!-- Filter & Search Section -->
@@ -536,11 +539,13 @@ pieCharts.forEach((id) => {
       <p class="section-title">Total Earnings</p>
       <p id="total-earnings-amount">$45,000</p> <!-- Dummy backend data -->
     </div>
-    <div class="right">
-      <button class="filter-button">Past Week</button>
-      <button class="filter-button">Past Month</button>
-      <button class="filter-button">Past Year</button>
-    </div>
+    <div class="earnings-filters">
+      <button>Past Week</button>
+      <button>Past Month</button>
+      <button>Past Year</button>
+      <button id="download-info">Download Info</button>
+  </div>
+  
   </div>
 
   <!-- Line Chart -->
@@ -550,12 +555,12 @@ pieCharts.forEach((id) => {
 
   <!-- Filters Below Chart -->
   <div class="chart-filters">
-    <div class="left">
-      <button class="filter-button">All</button>
-      <button class="filter-button">Basic Tier</button>
-      <button class="filter-button">Clear Club</button>
-      <button class="filter-button">Diamond Club</button>
-    </div>
+    <div class="earnings-filters">
+      <button>Basic Tier</button>
+      <button>Clear Club</button>
+      <button>Diamond Club</button>
+      <button id="download-info">Download Info</button>
+  </div>
     <div class="right">
       <div class="search-container">
         <input type="text" placeholder="Search...">
@@ -623,11 +628,11 @@ pieCharts.forEach((id) => {
       <p class="section-title">Total Expenses</p>
       <p id="total-expenses-amount">$25,000</p> <!-- Dummy backend data -->
     </div>
-    <div class="right">
-      <button class="filter-button">Past Week</button>
-      <button class="filter-button">Past Month</button>
-      <button class="filter-button">Past Year</button>
-    </div>
+    <div class="earnings-filters">
+      <button>Past Week</button>
+      <button>Past Month</button>
+      <button>Past Year</button>
+  </div>
   </div>
 
   <!-- Line Chart -->
@@ -637,12 +642,12 @@ pieCharts.forEach((id) => {
 
   <!-- Filters Below Chart -->
   <div class="chart-filters">
-    <div class="left">
-      <button class="filter-button">All</button>
-      <button class="filter-button">Operational</button>
-      <button class="filter-button">Marketing</button>
-      <button class="filter-button">Miscellaneous</button>
-    </div>
+    <div class="earnings-filters">
+      <button>All</button>
+      <button>Operational</button>
+      <button>Marketing</button>
+      <button id="download-info">Download Info</button>
+  </div>
     <div class="right">
       <div class="search-container">
         <input type="text" placeholder="Search...">
