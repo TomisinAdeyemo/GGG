@@ -521,6 +521,37 @@
   padding: 5px 10px;
 }
 
+.earnings-filters {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+  justify-content: flex-end; /* Align buttons to the right */
+  margin-top: 10px;
+}
+
+.earnings-filters button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #452878;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#download-info {
+  background-color: #000;
+}
+
+#download-info:hover {
+  background-color: #1a1a1a;
+
+}
+
+.earnings-filters button:hover {
+  background-color: #10002b;
+}
+
+
 .line-chart {
   margin: 20px 0;
 }
@@ -568,11 +599,11 @@
 
 .expenses-table th, .expenses-table td {
   padding: 12px 15px; /* Add space inside cells */
-  border-bottom: 1px solid #ddd; /* Add subtle row separator */
+  
 }
 
 .expenses-table th {
-  background-color: #f4f4f4; /* Light background for headers */
+  background-color: #110818; /* Light background for headers */
   font-weight: bold;
   text-transform: uppercase;
   font-size: 14px;
@@ -617,7 +648,7 @@ th, td {
 }
 
 th {
-  background-color: #222;
+  background-color: #110818;
 }
 
 
@@ -1062,7 +1093,7 @@ th {
 
 .chart-box h3 {
   margin: 10px 0;
-  color: #FFD700;
+  color: #FFF;
 }
 
 .chart-box h4:last-of-type {
@@ -1144,6 +1175,30 @@ h1 {
 
 #map-image:hover {
   opacity: 1; /* Fully visible on hover */
+}
+
+.header-right {
+  display: flex;
+  gap: 10px; /* Add space between buttons */
+}
+
+.add-user-btn, .download-info-btn {
+  background-color: #000; /* Example color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.download-info-btn {
+  background-color: #452878; 
+  color: #fff;
+}
+
+.add-user-btn:hover, .download-info-btn:hover {
+  opacity: 0.9; /* Hover effect */
 }
 
  
