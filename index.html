@@ -5,6 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard</title>
   <link rel="stylesheet" href="style.css">
+   <!-- jQuery -->
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+   
+
+   <!-- jQuery Vector Map -->
+   <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
+   <script src="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jquery.vmap.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/maps/jquery.vmap.usa.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+   
+
 </head>
 <body>
   <div class="container">
@@ -103,60 +118,36 @@
   <div class="lower-section">
     <!-- First Box -->
     <div id="map-container">
-      <svg id="usa-map"></svg>
-      <div class="tooltip" id="tooltip"></div>
-    </div>
-  
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script>
-      // Define the map dimensions
-      const width = 860;
-      const height = 450;
-  
-      const svg = d3.select("#usa-map")
-                    .attr("viewBox", `0 0 ${width} ${height}`);
-  
-      const tooltip = d3.select("#tooltip");
-  
-      // Projection and path generator
-      const projection = d3.geoAlbersUsa().scale(1000).translate([width / 2, height / 2]);
-      const path = d3.geoPath().projection(projection);
-  
-      // Load GeoJSON data
-      d3.json("https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json")
-        .then(geoData => {
-          // Example custom colors for states
-          const userStateData = {
-            "California": "#fff",
-            "Texas": "#33FF57",
-            "Ariz": "#5733FF",
-            "New York": "#5733FF",
-            "New York": "#5733FF",
-            "New York": "#5733FF",
-            // Add other states as needed...
-          };
-  
-          svg.selectAll("path")
-            .data(geoData.features)
-            .enter()
-            .append("path")
-            .attr("d", path)
-            .attr("class", "state")
-            .attr("fill", d => userStateData[d.properties.name] || "#000") // Default gray for unspecified states
-            .on("mouseover", (event, d) => {
-              tooltip.style("visibility", "visible")
-                     .text(d.properties.name);
-            })
-            .on("mousemove", event => {
-              tooltip.style("top", (event.pageY - 10) + "px")
-                     .style("left", (event.pageX + 10) + "px");
-            })
-            .on("mouseout", () => {
-              tooltip.style("visibility", "hidden");
+      <h1>Customer Demographics</h1>
+      <div id="usaMap">
+          <div></div>
+          
+      </div>
+
+      <script>
+        $(document).ready(function () {
+            // Initialize the USA map
+            $('#usaMap').vectorMap({
+                map: 'usa_en',               // Load the USA map
+                backgroundColor: '#000',  // Set background color
+                borderColor: '#000',      // State border color
+                borderOpacity: 0.25,         // Border opacity
+                borderWidth: 0,              // Border width
+                color: '#452874',            // Default state color
+                enableZoom: true,            // Enable zoom feature
+                hoverColor: '#633DA1',       // State color on hover
+                hoverOpacity: null,          // Hover opacity
+                selectedColor: '#f4a582',    // State color when selected
+                showTooltip: true,           // Show tooltip on hover
+                onRegionClick: function (event, code, region) {
+                    // Action when a state is clicked
+                    alert('You clicked on state: ' + region);
+                }
             });
-        })
-        .catch(error => console.error("Error loading GeoJSON:", error));
+        });
     </script>
+    
+    </div>
     
   
     <!-- -->
@@ -197,34 +188,167 @@
   </div> 
 
   <section id="comparison-section">
-    <div class="box" id="comparison-box">
-      <h3>Income Insight</h3>
-      <div class="comparison-header">
-          <div class="comparison-text">
-              <h5><span class="circle" style="background-color: #FF5733;"></span>Basic Tier</h5>
-              <h5><span class="circle" style="background-color: #33FF57;"></span>Clear Club</h5>
-              <h5><span class="circle" style="background-color: #3357FF;"></span>Diamond Club</h5>
-          </div>
-          <div class="time-frame">
-              <button>This Week</button>
-              <button>This Month</button>
-              <button>This Year</button>
-          </div>
-      </div>
-      <canvas id="comparison-chart-canvas"></canvas>
-  </div>  
+    <style>
+      /* General container styling */
+      #histogram-container {
+          width: 90%;
+          margin: 30px auto;
+          padding: 20px;
+          border: 1px solid #ddd;
+          border-radius: 10px;
+          color: white;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          background-color: #000;
+          position: relative;
+      }
+
+      /* Title styling */
+      .chart-title {
+          position: absolute;
+          top: 10px;
+          left: 20px;
+          font-size: 15px;
+          font-weight: bold;
+      }
+
+      /* Labels styling */
+      .chart-labels {
+          position: absolute;
+          top: 10px;
+          right: 20px;
+          display: flex;
+          gap: 10px;
+      }
+
+      .chart-label {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          font-size: 14px;
+      }
+
+      .label-circle {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+      }
+
+      /* Buttons styling */
+      .chart-buttons {
+          margin-top: 40px;
+          display: flex;
+          gap: 10px;
+      }
+
+      .chart-button {
+          padding: 5px 10px;
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
+
+      .chart-button:hover {
+          background-color: #0056b3;
+      }
+
+      /* Chart canvas */
+      #histogram-chart {
+          margin-top: 20px;
+      }
+  </style>
+
+  <div id="histogram-container">
+    <!-- Title -->
+    <div class="chart-title">Insights</div>
+
+    <!-- Labels -->
+    <div class="chart-labels">
+        <div class="chart-label">
+            <div class="label-circle" style="background-color: #FF6384;"></div>
+            Tier 1
+        </div>
+        <div class="chart-label">
+            <div class="label-circle" style="background-color: #36A2EB;"></div>
+            Tier 2
+        </div>
+        <div class="chart-label">
+            <div class="label-circle" style="background-color: #FFCE56;"></div>
+            Tier 3
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="chart-buttons">
+        <button class="chart-button" onclick="updateChart('Tier 1')">Tier 1</button>
+        <button class="chart-button" onclick="updateChart('Tier 2')">Tier 2</button>
+        <button class="chart-button" onclick="updateChart('Tier 3')">Tier 3</button>
+    </div>
+
+    <!-- Chart -->
+    <canvas id="histogram-chart"></canvas>
+</div>
+
+<script>
+  // Chart data
+  const labels1 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const tierData = {
+      "Tier 1": [4, 5, 7, 8, 5, 6, 9, 6, 7, 8, 5, 9],
+      "Tier 2": [5, 6, 8, 7, 6, 7, 5, 8, 9, 6, 8, 7],
+      "Tier 3": [6, 8, 9, 7, 9, 8, 7, 6, 5, 7, 9, 8]
+  };
+
+  // Initial chart setup
+  const ctx1 = document.getElementById("histogram-chart").getContext("2d");
+  const chart = new Chart(ctx1, {
+      type: "bar",
+      data: {
+          labels: labels1,
+          datasets: [
+              {
+                  label: "Tier 1",
+                  backgroundColor: "#FF6384",
+                  data: tierData["Tier 1"]
+              }
+          ]
+      },
+      options: {
+          responsive: true,
+          plugins: {
+              legend: { display: false } // Hide default legend
+          },
+          scales: {
+              x: { title: { display: true, text: "Months" } },
+              y: {
+                  title: { display: true, text: "Amount Earned (in M)" },
+                  beginAtZero: true,
+                  max: 10
+              }
+          }
+      }
+  });
+
+  // Function to update chart based on tier
+  function updateChart(tier) {
+      chart.data.datasets[0].label = tier;
+      chart.data.datasets[0].data = tierData[tier];
+      chart.update();
+  }
+</script>
 </section>
 
 <div class="box" id="final-box">
-  <h3 class="final-header">Comparison Analysis</h3>
+  <h3 class="final-header">Third-Party Services Expenses</h3>
   <div class="label-container">
-      <span><span class="circle" style="background-color: #FF5733;"></span> Label 1</span>
-      <span><span class="circle" style="background-color: #33FF57;"></span> Label 2</span>
-      <span><span class="circle" style="background-color: #3357FF;"></span> Label 3</span>
-      <span><span class="circle" style="background-color: #FFC300;"></span> Label 4</span>
-      <span><span class="circle" style="background-color: #DA33FF;"></span> Label 5</span>
-      <span><span class="circle" style="background-color: #33FFF6;"></span> Label 6</span>
-      <span><span class="circle" style="background-color: #FF6F33;"></span> Label 7</span>
+      <span><span class="circle" style="background-color: #FF5733;"></span>Profit</span>
+      <span><span class="circle" style="background-color: #33FF57;"></span>Paypal</span>
+      <span><span class="circle" style="background-color: #3357FF;"></span>Telesign</span>
+      <span><span class="circle" style="background-color: #FFC300;"></span>Cloudinary</span>
+      <span><span class="circle" style="background-color: #DA33FF;"></span>Contabo</span>
+      <span><span class="circle" style="background-color: #33FFF6;"></span>Bird</span>
+      <span><span class="circle" style="background-color: #FF6F33;"></span>Gemini</span>
   </div>
   <div class="pie-chart-container">
       <div class="chart-box">
