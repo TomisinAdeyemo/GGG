@@ -10,7 +10,7 @@
     background-color: #000;
     background-image: url(./Admin_Log_in.png);
     color: #fff;
-    font-size: 13px;
+    font-size: 11px;
     display: flex;
     height: 100vh;
   }
@@ -820,6 +820,7 @@ th {
 }
 
 .second-box {
+  width: 35%;
   background: #000;
   padding: 20px;
   border-radius: 10px;
@@ -927,12 +928,13 @@ th {
 }
 
 #comparison-section {
+  height: 400px;
   margin-top: -200px;
   padding: 20px;
   background-color: #000;
   border-radius: 10px;
   color: white;
-  width: 70%;
+  width: 62%;
 }
 
 #comparison-box {
@@ -1098,3 +1100,50 @@ svg {
   margin-left: -10px;
 }
 
+/* Styling for the map container */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f9f9f9;
+  font-size: 12px;
+}
+
+h1 {
+  text-align: left;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+#map-container {
+  max-width: 800px;
+  height: 350px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #000;
+  border: 1px solid #452878;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative; /* Enables positioning of child elements like the image */
+}
+
+#usaMap {
+  width: 100%;
+  height: 250px;
+}
+
+#map-image {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 100px; /* Adjust size */
+  opacity: 0.8; /* Slight transparency */
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+#map-image:hover {
+  opacity: 1; /* Fully visible on hover */
+}
+
+ 
