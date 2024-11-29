@@ -113,3 +113,4 @@ document.getElementById("earnings-btn").addEventListener("click", function () {
   document.getElementById("earnings-section").style.display = "block";
 });
 
+
