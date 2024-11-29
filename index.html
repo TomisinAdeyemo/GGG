@@ -9,17 +9,11 @@
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="https://d3js.org/d3.v7.min.js"></script>
-
-   
-
    <!-- jQuery Vector Map -->
    <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
    <script src="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jquery.vmap.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/maps/jquery.vmap.usa.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
-   
 
 </head>
 <body>
@@ -136,7 +130,7 @@
                 borderOpacity: 0.25,         // Border opacity
                 borderWidth: 0,              // Border width
                 color: '#452874',            // Default state color
-                enableZoom: true,            // Enable zoom feature
+                enableZoom: true,            
                 hoverColor: '#633DA1',       // State color on hover
                 hoverOpacity: null,          // Hover opacity
                 selectedColor: '#f4a582',    // State color when selected
@@ -478,7 +472,7 @@
     </div>
     <div class="search-field">
       <input type="text" placeholder="Search users..." class="search-input">
-      <button class="search-btn">🔍</button>
+      <button class="search-btn"><img src="./search-2-line.png" alt="Search"></button>
     </div>
   </div>
 
@@ -575,9 +569,9 @@
       <button id="download-info">Download Info</button>
   </div>
     <div class="right">
-      <div class="search-container">
-        <input type="text" placeholder="Search...">
-        <button><i class="fas fa-search"></i></button>
+      <div class="search-field">
+        <input type="text" placeholder="Search users..." class="search-input">
+        <button class="search-btn"><img src="./search-2-line.png" alt="Search"></button>
       </div>
     </div>
   </div>
@@ -662,9 +656,9 @@
       <button id="download-info">Download Info</button>
   </div>
     <div class="right">
-      <div class="search-container">
-        <input type="text" placeholder="Search...">
-        <button><i class="fas fa-search"></i></button>
+      <div class="search-field">
+        <input type="text" placeholder="Search users..." class="search-input">
+        <button class="search-btn"><img src="./search-2-line.png" alt="Search"></button>
       </div>
     </div>
   </div>
@@ -736,7 +730,8 @@
       <button class="tab">Past Year</button>
     </div>
     <div class="search-field">
-      <input type="text" id="message-search" placeholder="Search messages" />
+      <input type="text" placeholder="Search users..." class="search-input">
+      <button class="search-btn"><img src="./search-2-line.png" alt="Search"></button>
     </div>
   </div>
 
@@ -816,9 +811,9 @@
     </div>
 
     <!-- Right: Search Field -->
-    <div class="right-search-container">
-      <input type="text" id="filter-search" placeholder="Filter Reports" />
-      <button id="filter-search-btn">Search</button>
+    <div class="search-field">
+      <input type="text" placeholder="Search users..." class="search-input">
+      <button class="search-btn"><img src="./search-2-line.png" alt="Search"></button>
     </div>
   </div>
 
