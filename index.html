@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
    <!-- jQuery -->
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -14,6 +17,8 @@
    <script src="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jquery.vmap.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/maps/jquery.vmap.usa.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+   
 
 </head>
 <body>
@@ -537,7 +542,7 @@
   <!-- Earnings Title -->
   <div class="earnings-header">
     <h3>Earnings</h3>
-    <h4>All Incomes</h4>
+    <h4>All incomes made from subscriptions</h4>
   </div>
 
   <!-- Total Earnings Section -->
@@ -555,10 +560,83 @@
   
   </div>
 
-  <!-- Line Chart -->
-  <div class="line-chart">
-    <canvas id="earnings-chart"></canvas>
+  <div>
+    <div class="chart-container-line">
+      <canvas id="expenses-line-chart"></canvas>
   </div>
+
+  <script>
+    $(document).ready(function () {
+
+        const ctx = document.getElementById('expenses-line-chart').getContext('2d');
+
+        // Data for the chart
+        const data = {
+          labels: [
+              'January', 'February', 'March', 'April', 'May', 
+              'June', 'July', 'August', 'September', 'October', 
+              'November', 'December'
+          ],
+          datasets: [{
+              label: 'Earnings',
+              data: [5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 45000, 30000, 20000, 10000],
+              borderColor: 'rgba(75, 192, 192, 1)',
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderWidth: 1.5,
+              tension: 0.2,
+          }]
+      };
+      
+      // Configuration for the chart
+      const config = {
+          type: 'line',
+          data: data,
+          options: {
+              responsive: true,
+              maintainAspectRatio: false, // Allows dynamic scaling
+              plugins: {
+                  legend: {
+                      display: true,
+                      position: 'top',
+                      labels: {
+                          color: '#fff' // Legend text color
+                      }
+                  }
+              },
+              scales: {
+                  x: {
+                      title: {
+                          display: true,
+                          text: 'Months of the Year',
+                          color: '#fff'
+                      },
+                      ticks: {
+                          color: '#fff' // X-axis text color
+                      }
+                  },
+                  y: {
+                      title: {
+                          display: true,
+                          text: 'Amount (in $)',
+                          color: '#fff'
+                      },
+                      min: 0,
+                      max: 50000,
+                      ticks: {
+                          stepSize: 10000,
+                          color: '#fff' // Y-axis text color
+                      }
+                  }
+              }
+          }
+      };
+    
+
+      new Chart(ctx, config); });
+</script>
+
+  </div>
+
 
   <!-- Filters Below Chart -->
   <div class="chart-filters">
@@ -575,6 +653,7 @@
       </div>
     </div>
   </div>
+
 
   <!-- Table -->
   <div class="earnings-table">
@@ -642,10 +721,83 @@
   </div>
   </div>
 
-  <!-- Line Chart -->
-  <div class="line-chart">
-    <canvas id="expenses-chart"></canvas>
+  <div>
+    <div class="chart-container-line">
+      <canvas id="expenses-line-chart2"></canvas>
   </div>
+
+  <script>
+    $(document).ready(function () {
+
+        const ctx = document.getElementById('expenses-line-chart2').getContext('2d');
+
+        // Data for the chart
+        const data = {
+          labels: [
+              'January', 'February', 'March', 'April', 'May', 
+              'June', 'July', 'August', 'September', 'October', 
+              'November', 'December'
+          ],
+          datasets: [{
+              label: 'Expenses',
+              data: [5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 45000, 30000, 20000, 10000],
+              borderColor: 'rgba(75, 192, 192, 1)',
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderWidth: 1.5,
+              tension: 0.2,
+          }]
+      };
+      
+      // Configuration for the chart
+      const config = {
+          type: 'line',
+          data: data,
+          options: {
+              responsive: true,
+              maintainAspectRatio: false, // Allows dynamic scaling
+              plugins: {
+                  legend: {
+                      display: true,
+                      position: 'top',
+                      labels: {
+                          color: '#fff' // Legend text color
+                      }
+                  }
+              },
+              scales: {
+                  x: {
+                      title: {
+                          display: true,
+                          text: 'Months of the Year',
+                          color: '#fff'
+                      },
+                      ticks: {
+                          color: '#fff' // X-axis text color
+                      }
+                  },
+                  y: {
+                      title: {
+                          display: true,
+                          text: 'Amount (in $)',
+                          color: '#fff'
+                      },
+                      min: 0,
+                      max: 50000,
+                      ticks: {
+                          stepSize: 10000,
+                          color: '#fff' // Y-axis text color
+                      }
+                  }
+              }
+          }
+      };
+    
+
+      new Chart(ctx, config); });
+</script>
+
+  </div>
+
 
   <!-- Filters Below Chart -->
   <div class="chart-filters">
