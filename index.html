@@ -8,6 +8,7 @@
    <!-- jQuery -->
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script src="https://d3js.org/d3.v7.min.js"></script>
 
    
 
@@ -90,7 +91,9 @@
       </div>
     </div>
     <div class="info-box">
-      <div class="icon-container gradient-bg">💰</div>
+      <div class="icon-container gradient-bg">
+        <img src="./total users.png" alt="Dashboard Icon" class="dashboard-icon2" />
+      </div>
       <div class="text-container">
         <h2>Active Subscriptions</h2>
         <h3>10,245</h3>
@@ -146,13 +149,13 @@
         });
     </script>
     
-    </div>
+    </div>   
     
   
     <!-- -->
     <div class="second-box">
       <div class="box-header">
-        <h1>Users Info</h1>
+        <h1>Engagements</h1>
         <div class="switches">
           <button class="switch">All</button>
           <button class="switch">Man <i class="fas fa-male"></i></button>
@@ -182,161 +185,169 @@
         <canvas id="screentime-chart"></canvas>
       </div>
     </div>
-    
 
-  </div> 
+     </div> 
 
-  <section id="comparison-section">
+     <div class="chart-container">
+      <div class="chart-header">
+        <h2>Income Insights</h2>
+        <div class="legend">
+          <div class="legend-item">
+            <div class="legend-color" style="background: #E35FAE;"></div>
+            <span>Basic Tier</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background: #3173F3;"></div>
+            <span>Clear Club</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background: #E74747;"></div>
+            <span>Diamond Club</span>
+          </div>
+        </div>
+      </div>
+      <svg id="histogram" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="tooltip" id="tooltip"></div>
+
     <style>
-      /* General container styling */
-      #histogram-container {
-          width: 90%;
-          margin: 30px auto;
-          padding: 20px;
-          border: 1px solid #ddd;
-          border-radius: 10px;
-          color: white;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-          background-color: #000;
-          position: relative;
+      body {
+        background-color: black;
+        color: white;
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        display: flex;
+        justify-content: center;
       }
-
-      /* Title styling */
-      .chart-title {
-          position: absolute;
-          top: 10px;
-          left: 20px;
-          font-size: 15px;
-          font-weight: bold;
+      .chart-container {
+        border: 1px solid #452874 !important;
+        background-color: #000;
+        border-radius: 10px;
+        padding: 20px;
+        width: 90%;
+        max-width: 630px;
+        height: 400px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
       }
-
-      /* Labels styling */
-      .chart-labels {
-          position: absolute;
-          top: 10px;
-          right: 20px;
-          display: flex;
-          gap: 10px;
+      .chart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
       }
-
-      .chart-label {
-          display: flex;
-          align-items: center;
-          gap: 5px;
-          font-size: 14px;
+      .chart-header h2 {
+        margin: 0;
+        font-size: 18px;
       }
-
-      .label-circle {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
+      .legend {
+        display: flex;
+        gap: 15px;
       }
-
-      /* Buttons styling */
-      .chart-buttons {
-          margin-top: 40px;
-          display: flex;
-          gap: 10px;
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
       }
-
-      .chart-button {
-          padding: 5px 10px;
-          background-color: #007bff;
-          color: #fff;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-          transition: background-color 0.3s ease;
+      .legend-color {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
       }
-
-      .chart-button:hover {
-          background-color: #0056b3;
+      svg {
+        width: 100%;
+        height: auto;
       }
-
-      /* Chart canvas */
-      #histogram-chart {
-          margin-top: 20px;
+      .axis-label {
+        font-size: 12px;
+        text-anchor: middle;
       }
-  </style>
+      .tooltip {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 12px;
+        pointer-events: none;
+        visibility: hidden;
+      }
+    </style>
 
-  <div id="histogram-container">
-    <!-- Title -->
-    <div class="chart-title">Insights</div>
+  <script>
+    // Data for tiers
+    const data = {
+      months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      values: {
+        "Tier 1": [120, 200, 300, 400, 150, 250, 350, 500, 450, 300, 200, 100],
+        "Tier 2": [100, 150, 250, 300, 120, 200, 270, 320, 400, 300, 220, 140],
+        "Tier 3": [80, 100, 150, 200, 90, 140, 180, 210, 250, 200, 160, 110],
+      }
+    };
 
-    <!-- Labels -->
-    <div class="chart-labels">
-        <div class="chart-label">
-            <div class="label-circle" style="background-color: #FF6384;"></div>
-            Tier 1
-        </div>
-        <div class="chart-label">
-            <div class="label-circle" style="background-color: #36A2EB;"></div>
-            Tier 2
-        </div>
-        <div class="chart-label">
-            <div class="label-circle" style="background-color: #FFCE56;"></div>
-            Tier 3
-        </div>
+    const colors = { "Tier 1": "#E35FAE", "Tier 2": "#3173F3", "Tier 3": "#E74747" };
+    const margin = { top: 20, right: 20, bottom: 50, left: 50 };
+    const width = 800 - margin.left - margin.right;
+    const height = 400 - margin.top - margin.bottom;
+
+    const svg = d3.select("#histogram")
+      .append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    const tooltip = d3.select("#tooltip");
+
+    // Scales
+    const x0Scale = d3.scaleBand().domain(data.months).range([0, width]).padding(0.2);
+    const x1Scale = d3.scaleBand().domain(Object.keys(data.values)).range([0, x0Scale.bandwidth()]).padding(0.1);
+    const yScale = d3.scaleLinear().domain([0, 600]).range([height, 0]);
+
+    // Axes
+    svg.append("g")
+      .attr("transform", `translate(0,${height})`)
+      .call(d3.axisBottom(x0Scale));
+
+    svg.append("g").call(d3.axisLeft(yScale));
+
+    // Axis Labels
+    svg.append("text")
+      .attr("class", "axis-label")
+      .attr("x", width / 2)
+      .attr("y", height + 40)
+      .text("Months");
+
+    svg.append("text")
+      .attr("class", "axis-label")
+      .attr("x", -height / 2)
+      .attr("y", -40)
+      .attr("transform", "rotate(-90)")
+      .text("Amount Earned");
+
+    // Grouped Bars
+    svg.selectAll(".month")
+      .data(data.months)
+      .enter()
+      .append("g")
+      .attr("class", "month")
+      .attr("transform", d => `translate(${x0Scale(d)}, 0)`)
+      .selectAll(".bar")
+      .data(d => Object.entries(data.values).map(([key, values]) => ({ tier: key, value: values[data.months.indexOf(d)] })))
+      .enter()
+      .append("rect")
+      .attr("class", "bar")
+      .attr("x", d => x1Scale(d.tier))
+      .attr("y", d => yScale(d.value))
+      .attr("width", x1Scale.bandwidth())
+      .attr("height", d => height - yScale(d.value))
+      .attr("fill", d => colors[d.tier])
+      .on("mouseover", (event, d) => {
+        tooltip.style("visibility", "visible").text(`${d.tier}: $${d.value}`);
+      })
+      .on("mousemove", event => {
+        tooltip.style("top", `${event.pageY - 10}px`).style("left", `${event.pageX + 10}px`);
+      })
+      .on("mouseout", () => tooltip.style("visibility", "hidden"));
+  </script>
+
     </div>
 
-    <!-- Buttons -->
-    <div class="chart-buttons">
-        <button class="chart-button" onclick="updateChart('Tier 1')">Tier 1</button>
-        <button class="chart-button" onclick="updateChart('Tier 2')">Tier 2</button>
-        <button class="chart-button" onclick="updateChart('Tier 3')">Tier 3</button>
-    </div>
-
-    <!-- Chart -->
-    <canvas id="histogram-chart"></canvas>
-</div>
-
-<script>
-  // Chart data
-  const labels1 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  const tierData = {
-      "Tier 1": [4, 5, 7, 8, 5, 6, 9, 6, 7, 8, 5, 9],
-      "Tier 2": [5, 6, 8, 7, 6, 7, 5, 8, 9, 6, 8, 7],
-      "Tier 3": [6, 8, 9, 7, 9, 8, 7, 6, 5, 7, 9, 8]
-  };
-
-  // Initial chart setup
-  const ctx1 = document.getElementById("histogram-chart").getContext("2d");
-  const chart = new Chart(ctx1, {
-      type: "bar",
-      data: {
-          labels: labels1,
-          datasets: [
-              {
-                  label: "Tier 1",
-                  backgroundColor: "#FF6384",
-                  data: tierData["Tier 1"]
-              }
-          ]
-      },
-      options: {
-          responsive: true,
-          plugins: {
-              legend: { display: false } // Hide default legend
-          },
-          scales: {
-              x: { title: { display: true, text: "Months" } },
-              y: {
-                  title: { display: true, text: "Amount Earned (in M)" },
-                  beginAtZero: true,
-                  max: 10
-              }
-          }
-      }
-  });
-
-  // Function to update chart based on tier
-  function updateChart(tier) {
-      chart.data.datasets[0].label = tier;
-      chart.data.datasets[0].data = tierData[tier];
-      chart.update();
-  }
-</script>
-</section>
 
 <div class="box" id="final-box">
   <h3 class="final-header">Third-Party Services Expenses</h3>
@@ -375,55 +386,58 @@
           <h4>$0.09 per token</h4>
       </div>
   </div>
+
+  <script>
+    // Data and colors for the pie charts
+  const dataa = [12, 19, 3, 5, 2, 3, 7];
+  const colorss = [
+      '#FF5733',
+      '#33FF57',
+      '#3357FF',
+      '#FFC300',
+      '#DA33FF',
+      '#33FFF6',
+      '#FF6F33',
+  ];
+  
+  const labels = [
+      'Label 1',
+      'Label 2',
+      'Label 3',
+      'Label 4',
+      'Label 5',
+      'Label 6',
+      'Label 7',
+  ];
+  
+  // Create pie charts
+  const pieCharts = ['pie-chart-1', 'pie-chart-2', 'pie-chart-3', 'pie-chart-4'];
+  
+  pieCharts.forEach((id) => {
+      const ctx = document.getElementById(id).getContext('2d');
+      new Chart(ctx, {
+          type: 'pie',
+          data: {
+              labels: labels,
+              datasets: [{
+                  data: dataa,
+                  backgroundColor: colorss,
+              }],
+          },
+          options: {
+              plugins: {
+                  legend: { display: false }, // Hide default legend
+              },
+          },
+      });
+  });
+  
+  
+  </script>
+
 </div>
 
-<script>
-  // Data and colors for the pie charts
-const data = [12, 19, 3, 5, 2, 3, 7];
-const colors = [
-    '#FF5733',
-    '#33FF57',
-    '#3357FF',
-    '#FFC300',
-    '#DA33FF',
-    '#33FFF6',
-    '#FF6F33',
-];
 
-const labels = [
-    'Label 1',
-    'Label 2',
-    'Label 3',
-    'Label 4',
-    'Label 5',
-    'Label 6',
-    'Label 7',
-];
-
-// Create pie charts
-const pieCharts = ['pie-chart-1', 'pie-chart-2', 'pie-chart-3', 'pie-chart-4'];
-
-pieCharts.forEach((id) => {
-    const ctx = document.getElementById(id).getContext('2d');
-    new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: labels,
-            datasets: [{
-                data: data,
-                backgroundColor: colors,
-            }],
-        },
-        options: {
-            plugins: {
-                legend: { display: false }, // Hide default legend
-            },
-        },
-    });
-});
-
-
-</script>
   
       </div>
 
@@ -536,7 +550,7 @@ pieCharts.forEach((id) => {
   <div class="total-earnings">
     <div class="left">
       <p class="section-title">Total Earnings</p>
-      <p id="total-earnings-amount">$45,000</p> <!-- Dummy backend data -->
+      <h1 id="total-earnings-amount">$45,000</h1> <!-- Dummy backend data -->
     </div>
     <div class="earnings-filters">
       <button>Past Week</button>
