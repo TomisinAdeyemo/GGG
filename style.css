@@ -625,15 +625,14 @@
 
 .view-receipt-button {
   padding: 5px 10px; /* Add padding for a button-like feel */
-  background-color: #452878; /* Green background */
-  color: white;
+  color: #1E0F29;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .view-receipt-button:hover {
-  background-color: #452878; /* Darker green on hover */
+  background-color: #452878; 
 }
 
 table {
@@ -642,6 +641,7 @@ table {
   border-collapse: collapse;
   border: 1px solid #000;
   background-color: black;
+  border-color: transparent;
   color: white;
   margin-top: 1rem;
 }
@@ -649,7 +649,7 @@ table {
 th, td {
   padding: 10px;
   text-align: left;
-  border: 1px solid #444;
+  border: 1px solid #000;
 }
 
 th {
@@ -756,8 +756,8 @@ th {
 
 .search-field input {
   padding: 10px;
-  background-color: #333;
-  color: white;
+  background-color: #1E0F29;
+  color: grey;
   border: none;
 }
 
@@ -1407,4 +1407,17 @@ svg {
   font-size: 12px;
   pointer-events: none;
   visibility: hidden;
+}
+
+.search-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+.search-btn img {
+  width: 16px;
+  height: 16px;
 }
