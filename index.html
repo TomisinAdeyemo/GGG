@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   
@@ -86,7 +89,7 @@
       <div class="text-container">
         <h2>Total Users</h2>
         <h3>15,245</h3>
-        <h4>+9.34 Previous Month</h4>
+        <h4 style="font-weight: 300;">+9.34 Previous Month</h4>
       </div>
     </div>
     <div class="info-box">
@@ -96,7 +99,7 @@
       <div class="text-container">
         <h2>Active Subscriptions</h2>
         <h3>10,245</h3>
-        <h4>+9.34 Previous Month</h4>
+        <h4 style="font-weight: 300;">+9.34 Previous Month</h4>
       </div>
     </div>
     <div class="info-box">
@@ -104,7 +107,7 @@
       <div class="text-container">
         <h2>Inactive Users</h2>
         <h3>1,200</h3>
-        <h4>+9.34 Previous Month</h4>
+        <h4 style="font-weight: 300;">+9.34 Previous Month</h4>
       </div>
     </div>
     <div class="info-box">
@@ -112,7 +115,7 @@
       <div class="text-container">
         <h2>Active Trail Users</h2>
         <h3>230</h3>
-        <h4>+9.34 Previous Month</h4>
+        <h4 style="font-weight: 300;">+9.34 Previous Month</h4>
       </div>
     </div>
   </div>
@@ -152,38 +155,107 @@
     
   
     <!-- -->
-    <div class="second-box">
-      <div class="box-header">
-        <h1>Engagements</h1>
-        <div class="switches">
-          <button class="switch">All</button>
-          <button class="switch">Man <i class="fas fa-male"></i></button>
-          <button class="switch">Woman <i class="fas fa-female"></i></button>
-        </div>
-      </div>
-      <div class="user-data">
-        <div class="user-item">
-          <h2>Apple Send Frequency</h2>
-          <h4 id="user1-data">....</h4>
-        </div>
-        <div class="user-item">
-          <h2>Accepted Apples</h2>
-          <h4 id="user2-data">....</h4>
-        </div>
-        <div class="user-item">
-          <h2>Daily Apples Exchange</h2>
-          <h4 id="user3-data">....</h4>
-        </div>
-        <div class="user-item">
-          <h2>Pre Subscription Time</h2>
-          <h4 id="user4-data">....</h4>
-        </div>
-      </div>
-      <div class="screentime-section">
-        <h3>Screentime</h3>
-        <canvas id="screentime-chart"></canvas>
+    <div class="box" id="users-info-box">
+    <!-- Top Section -->
+    <div class="box-header">
+      <h3 style="font-size: 10px; margin-right: 20px;">Engagements</h3>
+      <div class="switch-buttons">
+        <button class="switch-option">
+          <i class="icon-all"></i> All
+        </button>
+        <button class="switch-option">
+          <i class="icon-man"></i> Man
+        </button>
+        <button class="switch-option">
+          <i class="icon-woman"></i> Woman
+        </button>
       </div>
     </div>
+    
+    <!-- Middle Section -->
+    <div class="box-middle">
+      <h4 class="left-text">Metrics</h4>
+      <button class="view-more-btn">View More</button>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-section">
+      <div class="stat-item">
+        <img src="./Frame 1618869032.png" alt="Icon 1" class="stat-icon">
+        <div>
+          <h5 class="stat-text">Apple send frequency</h5>
+          <p id="stat-1-subtext">[Backend Subtext]</p>
+        </div>
+      </div>
+      <div class="stat-item">
+        <img src="./Frame 1618869033.png" alt="Icon 2" class="stat-icon">
+        <div>
+          <h5 class="stat-text">Accepted Apples</h5>
+          <p id="stat-2-subtext">[Backend Subtext]</p>
+        </div>
+      </div>
+      <div class="stat-item">
+        <img src="./Frame 1618869035.png" alt="Icon 3" class="stat-icon">
+        <div>
+          <h5 class="stat-text">Daily Apples Exchanged</h5>
+          <p id="stat-3-subtext">[Backend Subtext]</p>
+        </div>
+      </div>
+      <div class="stat-item">
+        <img src="./Group 1171274850.png" alt="Icon 4" class="stat-icon">
+        <div>
+          <h5 class="stat-text">Pre-subscription Time</h5>
+          <p id="stat-4-subtext">[Backend Subtext]</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Demarcation -->
+    <hr class="box-divider">
+
+    <!-- Bottom Section -->
+    <div class="chart-section">
+      <h4 class="chart-title">Screentime Overview</h4>
+      <canvas id="screentime-chart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      const ctx = document.getElementById("screentime-chart").getContext("2d");
+      const screentimeChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+          datasets: [
+            {
+              label: "Hours Spent",
+              data: [2, 4, 3, 6, 5, 7, 4],
+              backgroundColor: "purple",
+              borderColor: "white",
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                color: "#fff",
+              },
+            },
+            x: {
+              ticks: {
+                color: "#fff",
+              },
+            },
+          },
+        },
+      });
+    });
+  </script>
 
      </div> 
 
@@ -223,7 +295,7 @@
         border-radius: 10px;
         padding: 20px;
         width: 90%;
-        max-width: 630px;
+        max-width: 700px;
         height: 400px;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
       }
@@ -841,14 +913,6 @@
   </div>
       </div>
 
-
-
-
-
-
-
-      
-
       <!-- Email Broadcast Section -->
       <div id="email-broadcast" class="content-section" style="display: none;">
         <!-- Top Bar -->
@@ -867,33 +931,21 @@
   <!-- Title and Button Section -->
   <div class="broadcast-header">
     <div class="title-left">
-      <h3>Email Broadcast</h3>
-      <p>Here's the list of messages</p>
+      <h3 style="font-size: 18px; color: #fff; font-weight: 700;">Email Broadcast</h3>
+      <p style="font-size: 14px; color: grey; font-weight: 300;" >Here is a list of mails sent on your account</p>
     </div>
-    <button class="create-message-btn">Create Broadcast Message</button>
+    <button class="create-message-btn">Create Broadcast +</button>
   </div>
 
   <!-- Tab Section -->
-  <div class="tab-section">
-    <div class="tab-buttons">
-      <button class="tab active">All</button>
-      <button class="tab">Past Week</button>
-      <button class="tab">Past Month</button>
-      <button class="tab">Past Year</button>
-    </div>
-    <div class="search-field">
-      <input type="text" placeholder="Search users..." class="search-input">
-      <button class="search-btn"><img src="./search-2-line.png" alt="Search"></button>
-    </div>
-  </div>
-
+  
   <!-- Section 1: Messages Table -->
   <div class="messages-table">
     <h4>Sent Messages</h4>
     <table>
       <thead>
         <tr>
-          <th>News Title</th>
+          <th>Mail Title</th>
           <th>Subscribers</th>
           <th>Created Date</th>
           <th>Action</th>
@@ -954,15 +1006,13 @@
   </div>
 
   <!-- Filter Tabs -->
-  <div class="filter-tabs">
-    <div class="tab-buttons">
-      <button class="tab active">All</button>
-      <button class="tab">Daily</button>
-      <button class="tab">Weekly</button>
-      <button class="tab">Monthly</button>
+  <div class="filter-search">
+    <div class="toggle-buttons">
+      <button class="toggle-btn active">All</button>
+      <button class="toggle-btn">Active</button>
+      <button class="toggle-btn">Inactive</button>
+      <button class="toggle-btn">Trial</button>
     </div>
-
-    <!-- Right: Search Field -->
     <div class="search-field">
       <input type="text" placeholder="Search users..." class="search-input">
       <button class="search-btn"><img src="./search-2-line.png" alt="Search"></button>
