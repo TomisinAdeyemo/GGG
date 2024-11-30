@@ -717,15 +717,16 @@ th {
 }
 
 .create-message-btn {
-  background-color: #452878;
+  background-color: #1E0F29;
   color: white;
   padding: 10px 20px;
   border: none;
+  border-radius: 12px;
   cursor: pointer;
 }
 
 .create-message-btn:hover {
-  background-color: #452878;
+  background-color: #563B76;
 }
 
 .tab-section {
@@ -777,23 +778,23 @@ th {
 }
 
 .messages-table th {
-  background-color: #333;
+  background-color: #452878;
 }
 
 .messages-table td {
-  background-color: #222;
+  background-color: #000;
 }
 
 .view-details-btn {
-  background-color: #452878;
+  background-color: transparent;
   padding: 5px 10px;
-  color: white;
+  color: #452878;
   border: none;
   cursor: pointer;
 }
 
 .view-details-btn:hover {
-  background-color: #452878;
+  color: #452878;
 }
 
 .send-message {
@@ -803,7 +804,7 @@ th {
 .send-message textarea {
   width: 100%;
   padding: 10px;
-  background-color: #333;
+  background-color: transparent;
   color: white;
   border: none;
   margin-bottom: 10px;
@@ -811,6 +812,7 @@ th {
 
 .send-btn {
   background-color: #452878;
+  border-radius: 5px;
   padding: 10px 20px;
   color: white;
   border: none;
@@ -856,9 +858,9 @@ th {
 }
 
 .second-box {
-  height: 400px;
-  width: 35%;
-  background: #000;
+  height: 500px;
+  width: 30%;
+  background: #fff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -933,7 +935,7 @@ th {
 }
 
 .chart-container {
-  margin-top: -150px;
+  margin-top: -350px;
   padding: 20px;
   background: #1a1a1a;
   border-radius: 8px;
@@ -1303,7 +1305,7 @@ h1 {
 .chart-button,
 .switch {
   padding: 5px 10px !important;
-  background-color: #007bff !important;
+  background-color: #452878 !important;
   color: #fff !important;
   border: none !important;
   border-radius: 5px !important;
@@ -1454,3 +1456,81 @@ canvas {
   font-weight: 300;
   color: grey;
 }
+
+#users-info-box {
+  padding: 20px;
+  background-color: #45287459;
+  color: #fff;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  max-width: 300px; /* Reduced the width */
+}
+
+.box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.switch-buttons button {
+  background-color: #8962C7;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  margin-right: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 9px;
+}
+
+.switch-buttons button:hover {
+  background-color: #824BDA59;
+}
+
+.box-middle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.view-more-btn {
+  background-color: transparent;
+  color: #8962C7;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.stats-section {
+  display: flex;
+  flex-direction: column; /* Changed to vertical arrangement */
+  gap: 35px; /* Added space between items */
+  margin: 20px 0;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.stat-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.box-divider {
+  border: 1px solid #555;
+  margin: 20px 0;
+}
+
+.chart-section {
+  margin-top: 15px;
+}
+
+.chart-title {
+  margin-bottom: 10px;
+}
+
