@@ -578,7 +578,7 @@
 }
 
 .view-receipt-button {
-  background-color: #452878;
+  background-color: transparent;
   color: white;
   padding: 5px 10px;
   border: none;
@@ -625,7 +625,7 @@
 
 .view-receipt-button {
   padding: 5px 10px; /* Add padding for a button-like feel */
-  color: #1E0F29;
+  color: #452878;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -774,7 +774,7 @@ th {
 .messages-table th, .messages-table td {
   padding: 10px;
   text-align: left;
-  border: 1px solid #333;
+  border: 1px solid #000;
 }
 
 .messages-table th {
@@ -1532,5 +1532,31 @@ canvas {
 
 .chart-title {
   margin-bottom: 10px;
+}
+
+.status-btn {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 15px;
+  cursor: not-allowed;
+  color: #fff;
+  font-size: 14px;
+}
+
+.status-btn.inactive {
+  background: #80ed99;
+}
+
+.view-btn {
+  background: #80ed99;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.view-btn:hover {
+  background: #80ed99;
 }
 
